@@ -1,5 +1,6 @@
 
-# Dev
+### Dev
+
 `npm run dev`
 
 Optimized files for production (gets called in docker build automatically), run Node server
@@ -7,11 +8,13 @@ Optimized files for production (gets called in docker build automatically), run 
 `npm run start`
 
 Run in Docker locally:
-`docker run --rm -e "NEXTAUTH_SECRET=SECRET" -e "CUSTOM_CLIENT_NAME=123" -e "CUSTOM_CLIENT_SECRET=123" -p 3000:3000 next`
+`docker build -t next .`
+`docker run --rm -e NEXTAUTH_SECRET=SECRET -e NEXTAUTH_URL="localhost:3000" -e "CUSTOM_CLIENT_NAME=123" -e "CUSTOM_CLIENT_SECRET=123" -e BACKEND_URL="https://calculator-k42qgew2la-uc.a.run.app/api" -p 3000:3000 next`
 
 
--------------
-# Run on gcloud
+
+### Run on gcloud
+
 Push image to google repository:
 Authenticate
 `docker build -t HOSTNAME .`
@@ -41,4 +44,10 @@ zb
 Log into gcloud, go to "cloud run" select latest image, set env variables (use .env as template), set max instance number to 1(!), deploy
 
 
+### Todo
+
+ - Get data from backend
+ - Clean up readme
+
+ - Test auth and backend post calls
 

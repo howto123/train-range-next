@@ -60,6 +60,4 @@ ENV PORT 3000
 # set hostname to localhost
 ENV HOSTNAME "localhost"
 
-ENV CUSTOM_CLIENT_NAME "123"
-
 CMD ["node", "server.js"]

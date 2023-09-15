@@ -5,7 +5,7 @@ export async function GET () {
     console.log(process.env.BACKEND_URL);
 
     fetch(process.env.BACKEND_URL!)
-        .then((res) => console.log(res.headers))
+        .then((res) => console.log(res.body))
         .catch((err) => console.error(err));
 
     return NextResponse.json({

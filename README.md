@@ -41,3 +41,5 @@ URL backend https://calculator-k42qgew2la-uc.a.run.app/api
  - Test auth and backend post calls (next auth problem: Error code: SSL_ERROR_RX_RECORD_TOO_LONG in docker and locally -> browser?)
  - Move secrets from env variables to secrets on gcloud
 
+ 
+

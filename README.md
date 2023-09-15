@@ -23,31 +23,19 @@ Authenticate
 Check folowwing link to get file from existing key or create ney one with a keyfile
 https://cloud.google.com/iam/docs/keys-list-get#iam-service-account-keys-list-gcloud
 
-grant permissions (we need roles/artifactregistry.writer)
-`gcloud projects add-iam-policy-binding PROJECT --member=PRINCPAL --role=ROLE`
-
-activate auth for project
-`gcloud auth activate-service-account GACCOUNT --key-file=GKEYFILE`
-
-activate auth for docker
-`gcloud auth configure-docker HOSTNAME`
-
 tag the local docker image
-`docker tag SOURCE-IMAGE LOCATION-docker.pkg.dev/PROJECT-ID/REPOSITORY/IMAGE:TAG`
+`docker build -t europe-west6-docker.pkg.dev/trainrangenext/nextjs/next .`
+`docker push europe-west6-docker.pkg.dev/trainrangenext/nextjs/next`
 
-finally push the image -> docs say project id, there I get permission denied!
-`docker push LOCATION-docker.pkg.dev/PROJECT-NAME/REPOSITORY/IMAGE
-
-zb
-`europe-west1-docker.pkg.dev/trainrangenext/repo1/next`
-
-Log into gcloud, go to "cloud run" select latest image, set env variables (use .env as template), set max instance number to 1(!), deploy
+Log into gcloud, go to "cloud run"
+ - elect latest image
+ - set env variables (-e flags from above)
+ - set max instance number to 1(!), deploy
 
 
 ### Todo
 
  - Get data from backend
- - Clean up readme
-
- - Test auth and backend post calls
+ - Test auth and backend post calls (next auth problem: Error code: SSL_ERROR_RX_RECORD_TOO_LONG in docker and locally -> browser?)
+ - Move secrets from env variables to secrets on gcloud
 

@@ -32,6 +32,8 @@ Log into gcloud, go to "cloud run"
  - set env variables (-e flags from above)
  - set max instance number to 1(!), deploy
 
+URL frontend: https://next-k42qgew2la-oa.a.run.app
+URL backend https://calculator-k42qgew2la-uc.a.run.app/api
 
 ### Todo
 

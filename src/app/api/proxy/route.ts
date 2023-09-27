@@ -2,15 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET () {
 
-    console.log(process.env.BACKEND_URL);
+    const backendurl: string = process.env.BACKEND_URL!;
+    const dataApi = backendurl + "/getdata";
+    console.log(dataApi);
 
-    fetch(process.env.BACKEND_URL!)
-        .then((res) => console.log(res.body))
-        .catch((err) => console.error(err));
+    const response = await fetch(dataApi);
+    const body = await response.json();
 
-    return NextResponse.json({
-        "HererWeGo": "The backend might have been called"
-    })
+    return NextResponse.json(body)
 }
 
 export async function POST (req: Request) {

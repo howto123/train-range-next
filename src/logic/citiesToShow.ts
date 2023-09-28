@@ -35,12 +35,6 @@ export const citiesToShow = (startCity: string, stepNumber: number): Cities => {
 
         if(!cityWithSteps) throw new Error("City name not found in city list.");
 
-        const city = {
-            Id: cityWithSteps.Id,
-            Name: cityWithSteps.Name,
-            Location: cityWithSteps.Location
-        }
-
         result.push({
             Id: cityWithSteps.Id,
             Name: cityWithSteps.Name,

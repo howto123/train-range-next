@@ -37,7 +37,8 @@ URL backend https://calculator-k42qgew2la-uc.a.run.app/api
 
 ### Todo
 
- - GetServersideProps does not seem to be executed
+ - Data fetching is done on serverside without proxy -> remove proxy?
+ - After Map reload scrolling position gets lost
  - Move secrets from env variables to secrets on gcloud
 
  

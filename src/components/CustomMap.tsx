@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { City, Cities } from "@/customTypes/datatypes"
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import { CrossOrigin, Icon, LatLngExpression, icon } from 'leaflet'

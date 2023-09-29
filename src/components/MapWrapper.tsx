@@ -1,22 +1,25 @@
+"use client"
 
 import dynamic from "next/dynamic";
-import { MapsProps } from "./CustomMap";
+import CustomMap, { MapsProps } from "./CustomMap";
+import { FunctionComponent, useEffect, useState } from "react";
 
 const Wrapper = ( props: MapsProps ) => {
-    const CustomMap = dynamic(() => import("@/components/CustomMap"), {
-        loading: () => <p>loading...</p>,
-        ssr: false
-    })
+	// this component is a workaround to prevent the Map and its dependencies to be executed on the server 
 
-    // TODO possibly export this dependency
+	const [Map, MapSet] = useState<FunctionComponent<MapsProps>>()
+	
+    useEffect(() => {
+        const load = async() => {
+            if(typeof global.window !== "undefined") {
+                const mapComponent = (await import("./CustomMap")).default as FunctionComponent
+				MapSet(() => mapComponent)
+            }
+        }
+        load()
+    }, [])
 
-
-      const mapProps = {
-        ...props,
-      }
-
-    return <CustomMap { ...mapProps } />
-
+    return Map ? <Map { ...props } /> : null
 }
 
 export default Wrapper;

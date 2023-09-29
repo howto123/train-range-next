@@ -1,17 +1,23 @@
 "use client"
 
+import { useEffect } from "react";
+
 const data = require("@/data/data.json");
 
 const Data = () => {
 
+    // if we use hooks, the code only gets executed on the client. checking if window exists would be another option
+    useEffect( () => undefined, [] )
+
     const handleDownloadClick = () => fetch("/api/proxy")
-        .then( res => res.blob())
+        .then(res => res.blob())
         .then(data => {
             var a = document.createElement("a");
             a.href = window.URL.createObjectURL(data);
             a.download = "dataToBeAddedTo";
             a.click();
         });
+    
 
     return <div>
         <p className="text_center">At the bottom you can download this.</p>

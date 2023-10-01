@@ -3,7 +3,6 @@
 
 import { ChangeEvent, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
-import * as http from "@/http/internalCalls"
 
 
 const Updatedata = () => {
@@ -20,11 +19,27 @@ const Updatedata = () => {
 
     const handleUploadClick = async () => {
         if (!file) {
-          return;
+			serverResponseSet("no file selected...")
+            return;
         }
-    
-        serverResponseSet(await http.uploadFile(file));
-    };
+		const content = await file.text();
+        const res = await fetch('/api/proxy', {
+				method: 'POST',
+				body: content,
+				cache: 'no-cache',
+				headers: {
+					'content-type': file.type,
+					'content-length': `${file.size}`
+				},
+			})
+			.then(res => res.json())
+			.then(obj => {
+				if(obj.error) throw new Error(obj.error)
+			})
+			.catch(err => err.message || "Error uploading the file...")
+
+		serverResponseSet(res)
+		};
 
 	if(!session) {
 		return <>
@@ -49,16 +64,3 @@ const Updatedata = () => {
 }
 
 export default Updatedata;
-
-
-// export async function getServerSideProps(context) {
-//   return {
-//     props: {
-//       session: await getServerSession(
-//         context.req,
-//         context.res,
-//         authOptions
-//       ),
-//     },
-//   }
-// }

@@ -25,15 +25,8 @@ const MapPage = ({
     const clickDecrease = () => {if (stepNumber > 1) {stepNumberSet( (n) => n-1 )}};
     const onSelectChanged: ChangeEventHandler<HTMLSelectElement> = (e) => startCitySet(e.currentTarget.value);
     
-    // calculate when page is loaded
     useEffect(() =>
-        displayedCitiesSet(citiesToShow(initalStartCity, initialStepNumber)),
-        [initalStartCity]
-    );
-
-    // calculate when a dependency changes
-    useEffect(() =>
-        displayedCitiesSet(citiesToShow(startCity, stepNumber)),
+        displayedCitiesSet(citiesToShow(startCity, stepNumber, cities)),
         [cities, startCity, stepNumber]
     );
 

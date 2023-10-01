@@ -34,7 +34,8 @@ const Updatedata = () => {
 			})
 			.then(res => res.json())
 			.then(obj => {
-				if(obj.error) throw new Error(obj.error)
+				if(obj.error) throw new Error(obj.error);
+				if(obj.message) return obj.message
 			})
 			.catch(err => err.message || "Error uploading the file...")
 

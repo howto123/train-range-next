@@ -12,11 +12,10 @@ export async function GET () {
 }
 
 export async function POST (req: NextRequest) {
-    let jsonString: string = "";
+    let bodyObject: string = "";
 
-    // TODO only works for json!
     try {
-        jsonString = await req.json();
+        bodyObject = await req.json();
     }
     catch( e: any ) {
         return NextResponse.json({
@@ -24,5 +23,7 @@ export async function POST (req: NextRequest) {
         })
     }
 
-    return NextResponse.json("Post received.");
+    // TODO make the post call to the backend
+
+    return NextResponse.json({message: "Post received."});
 }

@@ -1,9 +1,4 @@
 
-import MapWrapper from "@/components/MapWrapper"
-import { Cities, CitiesWithSteps, Connections } from "@/customTypes/datatypes"
-import { ChangeEventHandler, useEffect, useState } from "react";
-import { citiesToShow } from "@/logic/citiesToShow";
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import MapPage from "@/components/MapPage";
 
 

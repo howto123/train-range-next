@@ -18,8 +18,7 @@ const getNameList = (startCity: string, stepNumber: number, cities: CitiesWithSt
     return foundCity.Steps[saveStepNumber];
 }
 
-export const citiesToShow = (startCity: string, stepNumber: number): Cities => {
-    const allCities: CitiesWithSteps = require("@/data/data.json");
+export const citiesToShow = (startCity: string, stepNumber: number, allCities: CitiesWithSteps): Cities => {
 
     const result: Cities = [];
     let names: string[] = [];

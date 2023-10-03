@@ -37,9 +37,6 @@ URL backend https://calculator-k42qgew2la-uc.a.run.app/api
 
 ### Todo
 
- - Data fetching is done on serverside without proxy -> remove proxy?
- - The data page still uses the file import instead of the backend
- - After Map reload scrolling position gets lost
  - Move secrets from env variables to secrets on gcloud
 
  

@@ -38,7 +38,10 @@ export const options: AuthOptions = {
                             password: backendPassword
                         })
                     })
-                    .then(res => res.headers.getSetCookie())
+                    .then(res => {
+                        // @ts-ignore
+                        return res.headers.getSetCookie()
+                    })
                     .then(cookies => {
                         if(!cookies[0]) {
                             throw new Error("Token missing or not in first position in setCookie")

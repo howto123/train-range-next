@@ -32,10 +32,16 @@ export const options: AuthOptions = {
                         throw new Error("BACKEND_PASSWORD not found")
                     }
 
+                    console.log("Backend password is: " + backendPassword)
+                    console.log("URL is: " + loginApi)
+
                     const cookie = await fetch(loginApi, {
                         method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
                         body: JSON.stringify({
-                            password: backendPassword
+                            "password": backendPassword
                         })
                     })
                     .then(res => {
@@ -46,6 +52,7 @@ export const options: AuthOptions = {
                         if(!cookies[0]) {
                             throw new Error("Token missing or not in first position in setCookie")
                         }
+                        console.log("Cookie! "+ cookies[0])
                         return cookies[0]
                     })
                     .catch(err => console.log("There was an error during backend authentication."))

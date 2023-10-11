@@ -32,16 +32,20 @@ export async function POST (req: NextRequest) {
     const token = cookies().get("token")?.value
     const bearer= `Bearer ${token}`
     
-    const responseBody = await fetch(dataApi, { 
-        method: 'post', 
+    const request = { 
+        method: 'POST', 
         headers: {
-                'Authorization': bearer
-            }
-        })
-        .then(res => res.json())
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        },
+        body: JSON.stringify(bodyObject)
+    }
+    
+    const responseBody = await fetch(dataApi, request)
+        .then(res =>  res.text())
         .catch(err => {
-                console.log(err)
-                return {message: "Upload went wrong"}
+            console.log(err)
+            return {message: "Upload went wrong"}
         })
 
     // return to client. responseBody is a string

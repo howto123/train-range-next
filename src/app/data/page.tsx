@@ -3,7 +3,8 @@ import DownloadButton from "@/components/DownloadButton"
 
 const Data = async () => {
 
-    const URL = "https://calculator-k42qgew2la-uc.a.run.app/api/getbasedata"
+    const backendURL = process.env.BACKEND_URL!
+    const URL = backendURL + "/getbasedata"
     const res = await fetch(URL)
     const data = await res.json()
 

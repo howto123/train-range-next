@@ -3,9 +3,10 @@ import MapPage from "@/components/MapPage";
 
 
 const Index = async () => {
-    const URL = "https://calculator-k42qgew2la-uc.a.run.app/api/getdata";
+    const backendURL = process.env.BACKEND_URL!
+    const getURL = backendURL + "/getdata"
 
-    const res = await fetch(URL);
+    const res = await fetch(getURL, { cache: "no-store"});
     const cities = await res.json();
     
     return <MapPage cities={cities}/>

@@ -23,7 +23,7 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ARG BACKEND_URL=https://calculator-k42qgew2la-uc.a.run.app/api
+ARG BACKEND_URL=https://calculator2-k42qgew2la-oa.a.run.app/api
 
 
 

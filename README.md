@@ -10,7 +10,7 @@ Optimized files for production (gets called in docker build automatically), run 
 Run in Docker locally:
 Set BACKEND_URL via --build-arg BACKEND_URL=https://...
 `docker build -t next .`
-`docker run --rm -e NEXTAUTH_SECRET=SECRET -e NEXTAUTH_URL="localhost:3000" -e "CUSTOM_CLIENT_NAME=123" -e "CUSTOM_CLIENT_SECRET=123" -e BACKEND_URL="https://calculator-k42qgew2la-uc.a.run.app/api" -e BACKEND_PASSWORD="newpassword" -p 3000:3000 next`
+`docker run --rm -e NEXTAUTH_SECRET=SECRET -e NEXTAUTH_URL="localhost:3000" -e "CUSTOM_CLIENT_NAME=123" -e "CUSTOM_CLIENT_SECRET=123" -e BACKEND_URL="https://calculator2-k42qgew2la-oa.a.run.app/api" -e BACKEND_PASSWORD="newpassword" -p 3000:3000 next`
 
 Test local backend (that is running locally NOT in any container):
 `docker run --rm -e NEXTAUTH_SECRET=SECRET -e NEXTAUTH_URL="http://localhost:3000" -e "CUSTOM_CLIENT_NAME=123" -e "CUSTOM_CLIENT_SECRET=123" -e BACKEND_URL="http://host.docker.internal:5000/api" -e BACKEND_PASSWORD="newpassword" -p 3000:3000 next`
@@ -36,7 +36,7 @@ Log into gcloud, go to "cloud run"
  - set max instance number to 1(!), deploy
 
 URL frontend: https://next-k42qgew2la-oa.a.run.app
-URL backend https://calculator-k42qgew2la-uc.a.run.app/api
+URL backend https://calculator2-k42qgew2la-oa.a.run.app/api
 
 ### Todo
 

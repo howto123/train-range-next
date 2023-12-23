@@ -23,8 +23,10 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+ARG BACKEND_URL=https://calculator-k42qgew2la-uc.a.run.app/api
 
-# Next.js collects completely anonymous telemetry data about general usage.
+
+
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1

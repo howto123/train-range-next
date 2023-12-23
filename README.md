@@ -8,6 +8,7 @@ Optimized files for production (gets called in docker build automatically), run 
 `npm run start`
 
 Run in Docker locally:
+Set BACKEND_URL via --build-arg BACKEND_URL=https://...
 `docker build -t next .`
 `docker run --rm -e NEXTAUTH_SECRET=SECRET -e NEXTAUTH_URL="localhost:3000" -e "CUSTOM_CLIENT_NAME=123" -e "CUSTOM_CLIENT_SECRET=123" -e BACKEND_URL="https://calculator-k42qgew2la-uc.a.run.app/api" -e BACKEND_PASSWORD="newpassword" -p 3000:3000 next`
 
